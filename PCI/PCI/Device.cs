@@ -13,22 +13,20 @@
             _deviceId = deviceId;
         }
 
-        public void SetVendorName(string vendorName)
-        {
-            _vendorName = vendorName;
-        }
-
-        public void SetDeviceName(string deviceName)
-        {
-            _deviceName = deviceName;
-        }
-
         public string VendorId => _vendorId;
 
         public string DeviceId => _deviceId;
 
-        public string VendorName => _vendorName;
+        public string VendorName
+        {
+            get { return _vendorName; }
+            set { _vendorName = value; }
+        }
 
-        public string DeviceName => _deviceName;
+        public string DeviceName
+        {
+            get { return _deviceName; }
+            set { _deviceName = value; }
+        }
     }
 }

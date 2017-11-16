@@ -42,13 +42,13 @@ namespace PCI
                     var venName = parser.CheckStringIsVendor(file[i]);
                     if (venName != "")
                     {
-                        device.SetVendorName(venName);
+                        device.VendorName = venName;
                         for (int j = i + 1; j < file.Count(); j++)
                         {
                             var devName = parser.CheckStringIsDevice(file[j]);
                             if (devName != "")
                             {
-                                device.SetDeviceName(devName);
+                                device.DeviceName = devName;
                                 break;
                             }
                         }
