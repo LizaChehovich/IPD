@@ -28,12 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lBDevices = new System.Windows.Forms.ListBox();
+            this.tBGUID = new System.Windows.Forms.TextBox();
+            this.tBHardwareIDs = new System.Windows.Forms.TextBox();
+            this.tBManufacturer = new System.Windows.Forms.TextBox();
+            this.tBPath = new System.Windows.Forms.TextBox();
+            this.tBStatus = new System.Windows.Forms.TextBox();
+            this.SuspendLayout();
+            // 
+            // lBDevices
+            // 
+            this.lBDevices.FormattingEnabled = true;
+            this.lBDevices.ItemHeight = 16;
+            this.lBDevices.Location = new System.Drawing.Point(12, 12);
+            this.lBDevices.Name = "lBDevices";
+            this.lBDevices.Size = new System.Drawing.Size(377, 468);
+            this.lBDevices.TabIndex = 0;
+            this.lBDevices.SelectedIndexChanged += new System.EventHandler(this.lBDevices_SelectedIndexChanged);
+            // 
+            // tBGUID
+            // 
+            this.tBGUID.Location = new System.Drawing.Point(395, 12);
+            this.tBGUID.Name = "tBGUID";
+            this.tBGUID.Size = new System.Drawing.Size(297, 22);
+            this.tBGUID.TabIndex = 1;
+            // 
+            // tBHardwareIDs
+            // 
+            this.tBHardwareIDs.Location = new System.Drawing.Point(395, 41);
+            this.tBHardwareIDs.Multiline = true;
+            this.tBHardwareIDs.Name = "tBHardwareIDs";
+            this.tBHardwareIDs.Size = new System.Drawing.Size(297, 100);
+            this.tBHardwareIDs.TabIndex = 2;
+            // 
+            // tBManufacturer
+            // 
+            this.tBManufacturer.Location = new System.Drawing.Point(395, 148);
+            this.tBManufacturer.Name = "tBManufacturer";
+            this.tBManufacturer.Size = new System.Drawing.Size(297, 22);
+            this.tBManufacturer.TabIndex = 3;
+            // 
+            // tBPath
+            // 
+            this.tBPath.Location = new System.Drawing.Point(395, 177);
+            this.tBPath.Name = "tBPath";
+            this.tBPath.Size = new System.Drawing.Size(297, 22);
+            this.tBPath.TabIndex = 4;
+            // 
+            // tBStatus
+            // 
+            this.tBStatus.Location = new System.Drawing.Point(395, 206);
+            this.tBStatus.Name = "tBStatus";
+            this.tBStatus.Size = new System.Drawing.Size(297, 22);
+            this.tBStatus.TabIndex = 5;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(704, 494);
+            this.Controls.Add(this.tBStatus);
+            this.Controls.Add(this.tBPath);
+            this.Controls.Add(this.tBManufacturer);
+            this.Controls.Add(this.tBHardwareIDs);
+            this.Controls.Add(this.tBGUID);
+            this.Controls.Add(this.lBDevices);
+            this.Name = "MainForm";
+            this.Text = "Диспетчер устройств";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox lBDevices;
+        private System.Windows.Forms.TextBox tBGUID;
+        private System.Windows.Forms.TextBox tBHardwareIDs;
+        private System.Windows.Forms.TextBox tBManufacturer;
+        private System.Windows.Forms.TextBox tBPath;
+        private System.Windows.Forms.TextBox tBStatus;
     }
 }
 
