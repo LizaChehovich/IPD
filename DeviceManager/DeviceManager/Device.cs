@@ -1,4 +1,6 @@
-﻿namespace DeviceManager
+﻿using System.Collections.Generic;
+
+namespace DeviceManager
 {
     class Device
     {
@@ -13,7 +15,7 @@
         public string GUID { get; set; }
         public string[] HardwareIDs { get; set; }
         public string Manufacturer { get; set; }
-        public Driver Driver { get; set; }
+        public List<Driver> ListDrivers { get; set; }
         public string Path { get; set; }
         public Status Status { get; set; }
     }

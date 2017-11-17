@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DeviceManager
@@ -53,6 +47,16 @@ namespace DeviceManager
             tBManufacturer.Text = device.Manufacturer;
             tBPath.Text = device.Path;
             tBStatus.Text = device.Status.ToString();
+            dGVDrivers.Rows.Clear();
+            if (device.ListDrivers != null)
+            {
+                foreach (var driver in device.ListDrivers)
+                {
+                    var row = dGVDrivers.Rows.Add();
+                    dGVDrivers[0, row].Value = driver.Description;
+                    dGVDrivers[1, row].Value = driver.SysPath;
+                }
+            }
         }
     }
 }

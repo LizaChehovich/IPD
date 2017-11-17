@@ -34,6 +34,10 @@
             this.tBManufacturer = new System.Windows.Forms.TextBox();
             this.tBPath = new System.Windows.Forms.TextBox();
             this.tBStatus = new System.Windows.Forms.TextBox();
+            this.dGVDrivers = new System.Windows.Forms.DataGridView();
+            this.descriptionsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sysPathColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).BeginInit();
             this.SuspendLayout();
             // 
             // lBDevices
@@ -48,45 +52,74 @@
             // 
             // tBGUID
             // 
-            this.tBGUID.Location = new System.Drawing.Point(395, 12);
+            this.tBGUID.Location = new System.Drawing.Point(557, 10);
             this.tBGUID.Name = "tBGUID";
-            this.tBGUID.Size = new System.Drawing.Size(297, 22);
+            this.tBGUID.Size = new System.Drawing.Size(346, 22);
             this.tBGUID.TabIndex = 1;
             // 
             // tBHardwareIDs
             // 
-            this.tBHardwareIDs.Location = new System.Drawing.Point(395, 41);
+            this.tBHardwareIDs.Location = new System.Drawing.Point(557, 39);
             this.tBHardwareIDs.Multiline = true;
             this.tBHardwareIDs.Name = "tBHardwareIDs";
-            this.tBHardwareIDs.Size = new System.Drawing.Size(297, 100);
+            this.tBHardwareIDs.Size = new System.Drawing.Size(346, 100);
             this.tBHardwareIDs.TabIndex = 2;
             // 
             // tBManufacturer
             // 
-            this.tBManufacturer.Location = new System.Drawing.Point(395, 148);
+            this.tBManufacturer.Location = new System.Drawing.Point(557, 146);
             this.tBManufacturer.Name = "tBManufacturer";
-            this.tBManufacturer.Size = new System.Drawing.Size(297, 22);
+            this.tBManufacturer.Size = new System.Drawing.Size(346, 22);
             this.tBManufacturer.TabIndex = 3;
             // 
             // tBPath
             // 
-            this.tBPath.Location = new System.Drawing.Point(395, 177);
+            this.tBPath.Location = new System.Drawing.Point(557, 175);
             this.tBPath.Name = "tBPath";
-            this.tBPath.Size = new System.Drawing.Size(297, 22);
+            this.tBPath.Size = new System.Drawing.Size(346, 22);
             this.tBPath.TabIndex = 4;
             // 
             // tBStatus
             // 
-            this.tBStatus.Location = new System.Drawing.Point(395, 206);
+            this.tBStatus.Location = new System.Drawing.Point(557, 204);
             this.tBStatus.Name = "tBStatus";
-            this.tBStatus.Size = new System.Drawing.Size(297, 22);
+            this.tBStatus.Size = new System.Drawing.Size(346, 22);
             this.tBStatus.TabIndex = 5;
+            // 
+            // dGVDrivers
+            // 
+            this.dGVDrivers.AllowUserToAddRows = false;
+            this.dGVDrivers.AllowUserToDeleteRows = false;
+            this.dGVDrivers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGVDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGVDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.descriptionsColumn,
+            this.sysPathColumn});
+            this.dGVDrivers.Location = new System.Drawing.Point(405, 254);
+            this.dGVDrivers.Name = "dGVDrivers";
+            this.dGVDrivers.ReadOnly = true;
+            this.dGVDrivers.RowTemplate.Height = 24;
+            this.dGVDrivers.Size = new System.Drawing.Size(498, 150);
+            this.dGVDrivers.TabIndex = 6;
+            // 
+            // descriptionsColumn
+            // 
+            this.descriptionsColumn.HeaderText = "Описание";
+            this.descriptionsColumn.Name = "descriptionsColumn";
+            this.descriptionsColumn.ReadOnly = true;
+            // 
+            // sysPathColumn
+            // 
+            this.sysPathColumn.HeaderText = "Путь к .sys-файлу";
+            this.sysPathColumn.Name = "sysPathColumn";
+            this.sysPathColumn.ReadOnly = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 494);
+            this.ClientSize = new System.Drawing.Size(915, 494);
+            this.Controls.Add(this.dGVDrivers);
             this.Controls.Add(this.tBStatus);
             this.Controls.Add(this.tBPath);
             this.Controls.Add(this.tBManufacturer);
@@ -95,6 +128,7 @@
             this.Controls.Add(this.lBDevices);
             this.Name = "MainForm";
             this.Text = "Диспетчер устройств";
+            ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +142,9 @@
         private System.Windows.Forms.TextBox tBManufacturer;
         private System.Windows.Forms.TextBox tBPath;
         private System.Windows.Forms.TextBox tBStatus;
+        private System.Windows.Forms.DataGridView dGVDrivers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sysPathColumn;
     }
 }
 
