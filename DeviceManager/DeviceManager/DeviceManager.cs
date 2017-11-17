@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management;
 
 namespace DeviceManager
@@ -38,6 +39,14 @@ namespace DeviceManager
                 });
             }
             return listDevices;
+        }
+
+        public void InvokeMetod(string devID, string metod)
+        {
+            var deviceID = devID.Replace("\\", "\\\\");
+            var str = "Select * From Win32_PNPEntity WHERE DeviceID = '" + deviceID + "'";
+            var device = new ManagementObjectSearcher(str).Get().OfType<ManagementObject>().First();
+            device?.InvokeMethod(metod, new object[]{false});
         }
     }
 }

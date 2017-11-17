@@ -37,6 +37,8 @@
             this.dGVDrivers = new System.Windows.Forms.DataGridView();
             this.descriptionsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sysPathColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btEnable = new System.Windows.Forms.Button();
+            this.btDisable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dGVDrivers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,11 +116,33 @@
             this.sysPathColumn.Name = "sysPathColumn";
             this.sysPathColumn.ReadOnly = true;
             // 
+            // btEnable
+            // 
+            this.btEnable.Location = new System.Drawing.Point(557, 430);
+            this.btEnable.Name = "btEnable";
+            this.btEnable.Size = new System.Drawing.Size(101, 35);
+            this.btEnable.TabIndex = 7;
+            this.btEnable.Text = "Подключить";
+            this.btEnable.UseVisualStyleBackColor = true;
+            this.btEnable.Click += new System.EventHandler(this.btEnable_Click);
+            // 
+            // btDisable
+            // 
+            this.btDisable.Location = new System.Drawing.Point(681, 430);
+            this.btDisable.Name = "btDisable";
+            this.btDisable.Size = new System.Drawing.Size(101, 35);
+            this.btDisable.TabIndex = 8;
+            this.btDisable.Text = "Отключить";
+            this.btDisable.UseVisualStyleBackColor = true;
+            this.btDisable.Click += new System.EventHandler(this.btDisable_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 494);
+            this.Controls.Add(this.btDisable);
+            this.Controls.Add(this.btEnable);
             this.Controls.Add(this.dGVDrivers);
             this.Controls.Add(this.tBStatus);
             this.Controls.Add(this.tBPath);
@@ -145,6 +169,8 @@
         private System.Windows.Forms.DataGridView dGVDrivers;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sysPathColumn;
+        private System.Windows.Forms.Button btEnable;
+        private System.Windows.Forms.Button btDisable;
     }
 }
 

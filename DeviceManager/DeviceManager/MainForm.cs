@@ -6,7 +6,7 @@ namespace DeviceManager
 {
     public partial class MainForm : Form
     {
-        private DeviceManager _deviceManager;
+        private readonly DeviceManager _deviceManager;
         private List<Device> _listDevices;
 
         public MainForm()
@@ -19,6 +19,7 @@ namespace DeviceManager
         private void UpdateListDevices()
         {
             lBDevices.Items.Clear();
+            ClearDeviceInfo();
             _listDevices = _deviceManager.GetListDevices();
             foreach (var device in _listDevices)
             {
@@ -36,6 +37,7 @@ namespace DeviceManager
 
         private void FillDeviceInfo(Device device)
         {
+            ClearDeviceInfo();
             tBGUID.Text = device.GUID;
             if (device.HardwareIDs != null)
             {
@@ -47,7 +49,6 @@ namespace DeviceManager
             tBManufacturer.Text = device.Manufacturer;
             tBPath.Text = device.Path;
             tBStatus.Text = device.Status.ToString();
-            dGVDrivers.Rows.Clear();
             if (device.ListDrivers != null)
             {
                 foreach (var driver in device.ListDrivers)
@@ -57,6 +58,32 @@ namespace DeviceManager
                     dGVDrivers[1, row].Value = driver.SysPath;
                 }
             }
+            btDisable.Enabled = device.Status.Equals(Status.OK);
+            btEnable.Enabled = device.Status.Equals(Status.Error);
+        }
+
+        private void ClearDeviceInfo()
+        {
+            tBGUID.Clear();
+            tBHardwareIDs.Clear();
+            tBManufacturer.Clear();
+            tBPath.Clear();
+            tBStatus.Clear();
+            dGVDrivers.Rows.Clear();
+            btDisable.Enabled = false;
+            btEnable.Enabled = false;
+        }
+
+        private void btEnable_Click(object sender, EventArgs e)
+        {
+            _deviceManager.InvokeMetod(tBPath.Text, "Enable");
+            UpdateListDevices();
+        }
+
+        private void btDisable_Click(object sender, EventArgs e)
+        {
+            _deviceManager.InvokeMetod(tBPath.Text, "Disable");
+            UpdateListDevices();
         }
     }
 }
