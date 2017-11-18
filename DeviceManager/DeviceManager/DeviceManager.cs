@@ -35,7 +35,8 @@ namespace DeviceManager
                     Manufacturer = device.GetPropertyValue("Manufacturer")?.ToString(),
                     ListDrivers = GetListDrivers(device),
                     Path = device.GetPropertyValue("DeviceID")?.ToString(),
-                    Status = (Status)Enum.Parse(typeof(Status),device.GetPropertyValue("Status").ToString())
+                    Status = (Status)Enum.Parse(typeof(Status),device.GetPropertyValue("Status").ToString()),
+                    Class = device.GetPropertyValue("PNPClass")?.ToString()
                 });
             }
             return listDevices;

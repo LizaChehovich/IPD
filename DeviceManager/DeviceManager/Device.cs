@@ -2,9 +2,11 @@
 
 namespace DeviceManager
 {
-    class Device
+    public class Device
     {
         private string _name;
+
+        private string _class;
 
         public string Name
         {
@@ -18,5 +20,11 @@ namespace DeviceManager
         public List<Driver> ListDrivers { get; set; }
         public string Path { get; set; }
         public Status Status { get; set; }
+
+        public string Class
+        {
+            get => _class;
+            set => _class = string.IsNullOrEmpty(value) ? "Другие устройства" : value;
+        }
     }
 }

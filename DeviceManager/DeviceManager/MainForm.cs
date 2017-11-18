@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DeviceManager
@@ -8,82 +9,88 @@ namespace DeviceManager
     {
         private readonly DeviceManager _deviceManager;
         private List<Device> _listDevices;
+        private Cursor _cursor;
 
         public MainForm()
         {
             InitializeComponent();
             _deviceManager = new DeviceManager();
-            UpdateListDevices();
+            tVDevices.ImageList = imageList;
         }
 
-        private void UpdateListDevices()
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            lBDevices.Items.Clear();
-            ClearDeviceInfo();
+            UpdateInfo();
+        }
+
+        private void tVDevices_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Nodes.Count == 0)
+            {
+                mSInvoke.Visible = true;
+                var device = _listDevices.FirstOrDefault(d => d.Path.Equals(e.Node.Name));
+                mSInvoke.Image = device?.Status != Status.OK
+                    ? Properties.Resources.OFF1
+                    : Properties.Resources.ON1;
+                mSInvoke.ToolTipText = device?.Status == Status.OK ? "Отключить" : "Подключить";
+                mSInvoke.AccessibleName = device?.Status == Status.OK ? "Disable" : "Enable";
+            }
+            else
+            {
+                mSInvoke.Visible = false;
+            }
+        }
+
+        private void tVDevices_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Nodes.Count == 0)
+            {
+                new DeviceInfoForm(_listDevices.FirstOrDefault(d => d.Path.Equals(e.Node.Name))).ShowDialog();
+            }
+        }
+
+        private void mSUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateInfo();
+        }
+
+        private void mSInvoke_Click(object sender, EventArgs e)
+        {
+            _deviceManager.InvokeMetod(tVDevices.SelectedNode.Name, mSInvoke.AccessibleName);
+            UpdateInfo();
+        }
+
+        private void UpdateInfo()
+        {
+            _cursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
+            mSUpdate.Visible = false;
+            mSInvoke.Visible = false;
+            tVDevices.Nodes.Clear();
             _listDevices = _deviceManager.GetListDevices();
+            ShowInfo();
+        }
+
+        private void ShowInfo()
+        {
+            tVDevices.Nodes.AddRange(ListDevicesToTreeNode());
+            mSUpdate.Visible = true;
+            Cursor.Current = _cursor;
+        }
+
+        private TreeNode[] ListDevicesToTreeNode()
+        {
+            var treeNodes = new List<TreeNode>();
             foreach (var device in _listDevices)
             {
-                lBDevices.Items.Add(device.Name);
-            }
-        }
-
-        private void lBDevices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lBDevices.SelectedIndex != -1)
-            {
-                FillDeviceInfo(_listDevices[lBDevices.SelectedIndex]);
-            }
-        }
-
-        private void FillDeviceInfo(Device device)
-        {
-            ClearDeviceInfo();
-            tBGUID.Text = device.GUID;
-            if (device.HardwareIDs != null)
-            {
-                foreach (var hardwareID in device.HardwareIDs)
+                if (!treeNodes.Exists(n => n.Text.Equals(device.Class)))
                 {
-                    tBHardwareIDs.Text += hardwareID + '\n';
+                    treeNodes.Add(new TreeNode(device.Class, 2, 2));
                 }
+                treeNodes.FirstOrDefault(n => n.Text.Equals(device.Class))?.Nodes
+                    .Add(device.Path, device.Name, Convert.ToInt16(device.Status), Convert.ToInt16(device.Status));
             }
-            tBManufacturer.Text = device.Manufacturer;
-            tBPath.Text = device.Path;
-            tBStatus.Text = device.Status.ToString();
-            if (device.ListDrivers != null)
-            {
-                foreach (var driver in device.ListDrivers)
-                {
-                    var row = dGVDrivers.Rows.Add();
-                    dGVDrivers[0, row].Value = driver.Description;
-                    dGVDrivers[1, row].Value = driver.SysPath;
-                }
-            }
-            btDisable.Enabled = device.Status.Equals(Status.OK);
-            btEnable.Enabled = device.Status.Equals(Status.Error);
-        }
-
-        private void ClearDeviceInfo()
-        {
-            tBGUID.Clear();
-            tBHardwareIDs.Clear();
-            tBManufacturer.Clear();
-            tBPath.Clear();
-            tBStatus.Clear();
-            dGVDrivers.Rows.Clear();
-            btDisable.Enabled = false;
-            btEnable.Enabled = false;
-        }
-
-        private void btEnable_Click(object sender, EventArgs e)
-        {
-            _deviceManager.InvokeMetod(tBPath.Text, "Enable");
-            UpdateListDevices();
-        }
-
-        private void btDisable_Click(object sender, EventArgs e)
-        {
-            _deviceManager.InvokeMetod(tBPath.Text, "Disable");
-            UpdateListDevices();
+            return treeNodes.ToArray();
         }
     }
 }
