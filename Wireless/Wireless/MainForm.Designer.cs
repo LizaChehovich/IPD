@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lbxWifi = new System.Windows.Forms.ListBox();
             this.gbxCurrentWifiInfo = new System.Windows.Forms.GroupBox();
+            this.pbxConnectedSignalQuality = new System.Windows.Forms.PictureBox();
             this.btDisconnect = new System.Windows.Forms.Button();
             this.tbxConnectedIsSecure = new System.Windows.Forms.TextBox();
             this.lbConnectedIsSecure = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             this.tbxAddress = new System.Windows.Forms.TextBox();
             this.tmUpdate = new System.Windows.Forms.Timer(this.components);
             this.gbxWifiInfo = new System.Windows.Forms.GroupBox();
+            this.pbxSignalQuality = new System.Windows.Forms.PictureBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lbPassword = new System.Windows.Forms.Label();
             this.btConnected = new System.Windows.Forms.Button();
@@ -66,13 +68,11 @@
             this.lbSignalQuality = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.pbxConnectedSignalQuality = new System.Windows.Forms.PictureBox();
-            this.pbxSignalQuality = new System.Windows.Forms.PictureBox();
             this.gbxCurrentWifiInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxConnectedSignalQuality)).BeginInit();
             this.gbxWifiList.SuspendLayout();
             this.gbxPing.SuspendLayout();
             this.gbxWifiInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxConnectedSignalQuality)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignalQuality)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +108,15 @@
             this.gbxCurrentWifiInfo.TabIndex = 1;
             this.gbxCurrentWifiInfo.TabStop = false;
             this.gbxCurrentWifiInfo.Text = "Текущее подключение";
+            // 
+            // pbxConnectedSignalQuality
+            // 
+            this.pbxConnectedSignalQuality.Location = new System.Drawing.Point(406, 19);
+            this.pbxConnectedSignalQuality.Name = "pbxConnectedSignalQuality";
+            this.pbxConnectedSignalQuality.Size = new System.Drawing.Size(38, 32);
+            this.pbxConnectedSignalQuality.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxConnectedSignalQuality.TabIndex = 17;
+            this.pbxConnectedSignalQuality.TabStop = false;
             // 
             // btDisconnect
             // 
@@ -307,6 +316,15 @@
             this.gbxWifiInfo.TabStop = false;
             this.gbxWifiInfo.Text = "Информация о сети";
             // 
+            // pbxSignalQuality
+            // 
+            this.pbxSignalQuality.Location = new System.Drawing.Point(406, 19);
+            this.pbxSignalQuality.Name = "pbxSignalQuality";
+            this.pbxSignalQuality.Size = new System.Drawing.Size(38, 32);
+            this.pbxSignalQuality.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxSignalQuality.TabIndex = 19;
+            this.pbxSignalQuality.TabStop = false;
+            // 
             // tbPassword
             // 
             this.tbPassword.BackColor = System.Drawing.Color.LavenderBlush;
@@ -437,24 +455,6 @@
             this.imageList.Images.SetKeyName(3, "3.ico");
             this.imageList.Images.SetKeyName(4, "4.ico");
             // 
-            // pbxConnectedSignalQuality
-            // 
-            this.pbxConnectedSignalQuality.Location = new System.Drawing.Point(421, 19);
-            this.pbxConnectedSignalQuality.Name = "pbxConnectedSignalQuality";
-            this.pbxConnectedSignalQuality.Size = new System.Drawing.Size(38, 32);
-            this.pbxConnectedSignalQuality.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxConnectedSignalQuality.TabIndex = 17;
-            this.pbxConnectedSignalQuality.TabStop = false;
-            // 
-            // pbxSignalQuality
-            // 
-            this.pbxSignalQuality.Location = new System.Drawing.Point(421, 19);
-            this.pbxSignalQuality.Name = "pbxSignalQuality";
-            this.pbxSignalQuality.Size = new System.Drawing.Size(38, 32);
-            this.pbxSignalQuality.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxSignalQuality.TabIndex = 19;
-            this.pbxSignalQuality.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -472,12 +472,12 @@
             this.Text = "Wifi-менеджер ";
             this.gbxCurrentWifiInfo.ResumeLayout(false);
             this.gbxCurrentWifiInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxConnectedSignalQuality)).EndInit();
             this.gbxWifiList.ResumeLayout(false);
             this.gbxPing.ResumeLayout(false);
             this.gbxPing.PerformLayout();
             this.gbxWifiInfo.ResumeLayout(false);
             this.gbxWifiInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxConnectedSignalQuality)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignalQuality)).EndInit();
             this.ResumeLayout(false);
 

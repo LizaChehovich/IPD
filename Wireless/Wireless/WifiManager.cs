@@ -54,7 +54,7 @@ namespace Wireless
         {
             return _wifi.GetAccessPoints()?.Select(accessPoint => new WifiInfo
                        {
-                           Name = accessPoint.Name,
+                           Name = accessPoint?.Name ?? "Имя не определено",
                            MacAddressesList = GetMacAddresses(accessPoint),
                            AuthType = GetAuthType(accessPoint).ToString(),
                            SignalQuality = (int) accessPoint.SignalStrength,

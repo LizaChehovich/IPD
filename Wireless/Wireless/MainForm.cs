@@ -57,8 +57,8 @@ namespace Wireless
         {
             if (_isUpdate) return;
             _isUpdate = true;
-            _wifiInfoList = _wifiManager.GetWifiInfoList();
             ClearWifiInfo();
+            _wifiInfoList = _wifiManager.GetWifiInfoList();
             ShowWifiInfoList();
             _selectedWifiInfo = null;
             _isUpdate = false;
@@ -140,7 +140,8 @@ namespace Wireless
 
         private Image GetImageWifiBar(int signalQuality)
         {
-            return imageList.Images[signalQuality / PercentInBars];
+            return imageList.Images[
+                (int) Math.Round((double) (signalQuality - 10) / PercentInBars, MidpointRounding.ToEven)];
         }
     }
 }
