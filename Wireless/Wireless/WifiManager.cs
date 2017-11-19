@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using SimpleWifi;
 using SimpleWifi.Win32;
 using SimpleWifi.Win32.Interop;
@@ -40,44 +39,43 @@ namespace Wireless
                 .Select(x=>Dot11BssidToString(x.dot11Bssid)).ToList();
         }
 
-        private Dot11AuthAlgorithm GetAuthType(AccessPoint accessPoint)
+        private string GetAuthType(AccessPoint accessPoint)
         {
-            return ((WlanAvailableNetwork)accessPoint?.GetType()
-                .GetProperty("Network", BindingFlags.NonPublic | BindingFlags.Instance)
-                ?.GetValue(accessPoint, null)).dot11DefaultAuthAlgorithm;
+            if (accessPoint != null)
+                // ReSharper disable once PossibleNullReferenceException
+                return ((WlanAvailableNetwork) accessPoint.GetType()
+                        .GetProperty("Network", BindingFlags.NonPublic | BindingFlags.Instance)
+                        ?.GetValue(accessPoint, null))
+                    .dot11DefaultAuthAlgorithm.ToString();
+            return string.Empty;
         }
 
         public List<WifiInfo> GetWifiInfoList()
         {
-            var wifiInfoList = new List<WifiInfo>();
-            foreach (var accessPoint in _wifi.GetAccessPoints())
-            {
-              wifiInfoList.Add(new WifiInfo
-              {
-                  Name = accessPoint.Name,
-                  MacAddressesList = GetMacAddresses(accessPoint),
-                  AuthType = GetAuthType(accessPoint).ToString(),
-                  SignalQuality = (int)accessPoint.SignalStrength,
-                  IsConnected = accessPoint.IsConnected,
-                  IsSecure = accessPoint.IsSecure
-              });
-            }
-            return wifiInfoList;
+            return _wifi.GetAccessPoints()?.Select(accessPoint => new WifiInfo
+                       {
+                           Name = accessPoint.Name,
+                           MacAddressesList = GetMacAddresses(accessPoint),
+                           AuthType = GetAuthType(accessPoint).ToString(),
+                           SignalQuality = (int) accessPoint.SignalStrength,
+                           IsConnected = accessPoint.IsConnected,
+                           IsSecure = accessPoint.IsSecure
+                       })
+                       .ToList() ?? new List<WifiInfo>();
         }
 
         public void Connect(WifiInfo wifiInfo, string password)
         {
+            Disconnect();
             var accessPoint =  _wifi.GetAccessPoints().FirstOrDefault(x =>
                 x.Name.Equals(wifiInfo.Name) && GetAuthType(x).ToString().Equals(wifiInfo.AuthType));
-            if (accessPoint != null)
+            if (accessPoint == null) return;
+            var authRequest = new AuthRequest(accessPoint);
+            if (accessPoint.IsSecure)
             {
-                var authRequest = new AuthRequest(accessPoint);
-                if (accessPoint.IsSecure)
-                {
-                    authRequest.Password = password;
-                }
-                accessPoint.Connect(authRequest);
+                authRequest.Password = password;
             }
+            accessPoint.Connect(authRequest);
         }
 
         public void Disconnect()
@@ -90,17 +88,13 @@ namespace Wireless
             try
             {
                 var pingReply = new Ping().Send(address);
-                return String.Join("\n",
-                    new string[]
-                    {
-                        pingReply.Status.ToString(), pingReply.Address.ToString(),
-                        pingReply.RoundtripTime.ToString()
-                    });
+                return string.Join("\n", $"Статус: {pingReply?.Status.ToString()}",
+                    $"Адрес: {pingReply?.Address}", $"Время: {pingReply?.RoundtripTime.ToString()} мс");
 
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                return string.Join("\n", ex.Message, ex.InnerException?.Message);
             }
         }
     }
