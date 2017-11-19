@@ -16,36 +16,6 @@ namespace Wireless
 
         private readonly WlanClient _wlanClient = new WlanClient();
 
-        public List<WifiInfo> GetWifiInfoList()
-        {
-            var wifiInfoList = new List<WifiInfo>();
-            foreach (var accessPoint in _wifi.GetAccessPoints())
-            {
-              wifiInfoList.Add(new WifiInfo
-              {
-                  Name = accessPoint.Name,
-                  MacAddressesList = GetMacAddresses(accessPoint),
-                  AuthType = GetAuthType(accessPoint).ToString(),
-                  SignalQuality = (int)accessPoint.SignalStrength,
-                  IsConnected = accessPoint.IsConnected,
-                  IsSecure = accessPoint.IsSecure
-              });
-            }
-            return wifiInfoList;
-        }
-
-        private WifiInfo AccessPointToWifiInfo(AccessPoint accessPoint)
-        {
-            return new WifiInfo
-            {
-                Name = accessPoint.Name,
-                MacAddressesList = GetMacAddresses(accessPoint),
-                AuthType = GetAuthType(accessPoint).ToString(),
-                SignalQuality = (int)accessPoint.SignalStrength,
-                IsConnected = accessPoint.IsConnected
-            };
-        }
-
         private string Dot11SsidToString(Dot11Ssid ssid)
         {
             return Encoding.ASCII.GetString(ssid.SSID,0,(int)ssid.SSIDLength);
@@ -74,6 +44,44 @@ namespace Wireless
             return ((WlanAvailableNetwork)accessPoint?.GetType()
                 .GetProperty("Network", BindingFlags.NonPublic | BindingFlags.Instance)
                 ?.GetValue(accessPoint, null)).dot11DefaultAuthAlgorithm;
+        }
+
+        public List<WifiInfo> GetWifiInfoList()
+        {
+            var wifiInfoList = new List<WifiInfo>();
+            foreach (var accessPoint in _wifi.GetAccessPoints())
+            {
+              wifiInfoList.Add(new WifiInfo
+              {
+                  Name = accessPoint.Name,
+                  MacAddressesList = GetMacAddresses(accessPoint),
+                  AuthType = GetAuthType(accessPoint).ToString(),
+                  SignalQuality = (int)accessPoint.SignalStrength,
+                  IsConnected = accessPoint.IsConnected,
+                  IsSecure = accessPoint.IsSecure
+              });
+            }
+            return wifiInfoList;
+        }
+
+        public void Connect(WifiInfo wifiInfo, string password)
+        {
+            var accessPoint =  _wifi.GetAccessPoints().FirstOrDefault(x =>
+                x.Name.Equals(wifiInfo.Name) && GetAuthType(x).ToString().Equals(wifiInfo.AuthType));
+            if (accessPoint != null)
+            {
+                var authRequest = new AuthRequest(accessPoint);
+                if (accessPoint.IsSecure)
+                {
+                    authRequest.Password = password;
+                }
+                accessPoint.Connect(authRequest);
+            }
+        }
+
+        public void Disconnect()
+        {
+            _wifi.Disconnect();
         }
     }
 }

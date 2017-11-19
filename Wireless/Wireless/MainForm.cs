@@ -39,5 +39,15 @@ namespace Wireless
                     }));
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _wifiManager.Connect(_wifiInfoList.First(), "b2sthebest");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _wifiManager.Disconnect();
+        }
     }
 }
