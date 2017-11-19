@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,25 @@ namespace Wireless
         public void Disconnect()
         {
             _wifi.Disconnect();
+        }
+
+        public string Ping(string address)
+        {
+            try
+            {
+                var pingReply = new Ping().Send(address);
+                return String.Join("\n",
+                    new string[]
+                    {
+                        pingReply.Status.ToString(), pingReply.Address.ToString(),
+                        pingReply.RoundtripTime.ToString()
+                    });
+
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }
