@@ -122,7 +122,7 @@
             // 
             this.btDisconnect.BackColor = System.Drawing.Color.LavenderBlush;
             this.btDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btDisconnect.Location = new System.Drawing.Point(147, 245);
+            this.btDisconnect.Location = new System.Drawing.Point(259, 235);
             this.btDisconnect.Name = "btDisconnect";
             this.btDisconnect.Size = new System.Drawing.Size(185, 40);
             this.btDisconnect.TabIndex = 16;
@@ -152,9 +152,10 @@
             // 
             this.tbxConnectedMacAddress.BackColor = System.Drawing.Color.LavenderBlush;
             this.tbxConnectedMacAddress.Location = new System.Drawing.Point(24, 198);
+            this.tbxConnectedMacAddress.Multiline = true;
             this.tbxConnectedMacAddress.Name = "tbxConnectedMacAddress";
             this.tbxConnectedMacAddress.ReadOnly = true;
-            this.tbxConnectedMacAddress.Size = new System.Drawing.Size(435, 30);
+            this.tbxConnectedMacAddress.Size = new System.Drawing.Size(212, 77);
             this.tbxConnectedMacAddress.TabIndex = 7;
             // 
             // tbxConnectedAuthType
@@ -347,7 +348,7 @@
             // 
             this.btConnected.BackColor = System.Drawing.Color.LavenderBlush;
             this.btConnected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btConnected.Location = new System.Drawing.Point(147, 245);
+            this.btConnected.Location = new System.Drawing.Point(259, 245);
             this.btConnected.Name = "btConnected";
             this.btConnected.Size = new System.Drawing.Size(185, 40);
             this.btConnected.TabIndex = 16;
@@ -377,9 +378,10 @@
             // 
             this.tbxMacAddress.BackColor = System.Drawing.Color.LavenderBlush;
             this.tbxMacAddress.Location = new System.Drawing.Point(24, 198);
+            this.tbxMacAddress.Multiline = true;
             this.tbxMacAddress.Name = "tbxMacAddress";
             this.tbxMacAddress.ReadOnly = true;
-            this.tbxMacAddress.Size = new System.Drawing.Size(212, 30);
+            this.tbxMacAddress.Size = new System.Drawing.Size(212, 87);
             this.tbxMacAddress.TabIndex = 7;
             // 
             // tbxAuthType

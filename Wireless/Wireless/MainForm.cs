@@ -127,6 +127,8 @@ namespace Wireless
             tbxIsSecure.Text = wifiInfo.IsSecure ? "Пароль" : "Нет";
             if (wifiInfo.IsSecure)
             {
+                lbPassword.Visible = true;
+                tbPassword.Visible = true;
                 if (tbPassword.Text.Length == 0)
                     btConnected.Enabled = false;
             }
