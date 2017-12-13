@@ -33,10 +33,12 @@
             this.ProgressBar = new ExtendedDotNET.Controls.Progress.ProgressBar();
             this.btOK = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.lbWriteAction = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ProgressBar
             // 
+            this.ProgressBar.BackColor = System.Drawing.Color.LavenderBlush;
             this.ProgressBar.BarOffset = 1;
             this.ProgressBar.Caption = "";
             this.ProgressBar.CaptionColor = System.Drawing.Color.Black;
@@ -52,8 +54,8 @@
             this.ProgressBar.FloodPercentage = 0.2F;
             this.ProgressBar.FloodStyle = ExtendedDotNET.Controls.Progress.ProgressFloodStyle.Standard;
             this.ProgressBar.Invert = false;
-            this.ProgressBar.Location = new System.Drawing.Point(12, 40);
-            this.ProgressBar.MainColor = System.Drawing.Color.Purple;
+            this.ProgressBar.Location = new System.Drawing.Point(12, 70);
+            this.ProgressBar.MainColor = System.Drawing.Color.DarkViolet;
             this.ProgressBar.Maximum = 100;
             this.ProgressBar.Minimum = 0;
             this.ProgressBar.Name = "ProgressBar";
@@ -63,11 +65,11 @@
             this.ProgressBar.SecondColor = System.Drawing.Color.White;
             this.ProgressBar.Shadow = true;
             this.ProgressBar.ShadowOffset = 1;
-            this.ProgressBar.Size = new System.Drawing.Size(730, 69);
+            this.ProgressBar.Size = new System.Drawing.Size(730, 39);
             this.ProgressBar.Step = 1;
             this.ProgressBar.TabIndex = 2;
             this.ProgressBar.TextAntialias = true;
-            this.ProgressBar.Value = 0;
+            this.ProgressBar.Value = 30;
             // 
             // btOK
             // 
@@ -83,25 +85,38 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "CDBurn";
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
+            // lbWriteAction
+            // 
+            this.lbWriteAction.AutoSize = true;
+            this.lbWriteAction.Font = new System.Drawing.Font("PG Isadora Cyr Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbWriteAction.Location = new System.Drawing.Point(12, 26);
+            this.lbWriteAction.Name = "lbWriteAction";
+            this.lbWriteAction.Size = new System.Drawing.Size(0, 35);
+            this.lbWriteAction.TabIndex = 4;
             // 
             // BurnProgressWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Plum;
+            this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(754, 191);
+            this.Controls.Add(this.lbWriteAction);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.ProgressBar);
             this.Font = new System.Drawing.Font("PG Isadora Cyr Pro", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "BurnProgressWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CD Burn";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BurnProgressWindow_FormClosing);
             this.Resize += new System.EventHandler(this.BurnProgressWindow_Resize);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,5 +125,6 @@
         private ExtendedDotNET.Controls.Progress.ProgressBar ProgressBar;
         private System.Windows.Forms.Button btOK;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Label lbWriteAction;
     }
 }

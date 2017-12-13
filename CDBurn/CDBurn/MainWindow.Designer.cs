@@ -48,13 +48,13 @@ namespace CDBurn
             this.lbType = new System.Windows.Forms.Label();
             this.cbDiscRecorders = new System.Windows.Forms.ComboBox();
             this.tpFormat = new System.Windows.Forms.TabPage();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.cbDisc = new System.Windows.Forms.ComboBox();
-            this.btFormat = new System.Windows.Forms.Button();
             this.tbSizeF = new System.Windows.Forms.TextBox();
             this.lbSizeF = new System.Windows.Forms.Label();
             this.tbTypeF = new System.Windows.Forms.TextBox();
             this.lbTypeF = new System.Windows.Forms.Label();
+            this.btFormat = new System.Windows.Forms.Button();
+            this.cbDisc = new System.Windows.Forms.ComboBox();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.tcFunction.SuspendLayout();
             this.tpBurn.SuspendLayout();
@@ -266,33 +266,6 @@ namespace CDBurn
             this.tpFormat.TabIndex = 1;
             this.tpFormat.Text = "Очистить";
             // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog";
-            this.openFileDialog.Multiselect = true;
-            // 
-            // cbDisc
-            // 
-            this.cbDisc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDisc.FormattingEnabled = true;
-            this.cbDisc.Location = new System.Drawing.Point(260, 50);
-            this.cbDisc.Name = "cbDisc";
-            this.cbDisc.Size = new System.Drawing.Size(250, 34);
-            this.cbDisc.TabIndex = 0;
-            this.cbDisc.SelectedIndexChanged += new System.EventHandler(this.cbDisc_SelectedIndexChanged);
-            // 
-            // btFormat
-            // 
-            this.btFormat.Enabled = false;
-            this.btFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btFormat.Location = new System.Drawing.Point(260, 230);
-            this.btFormat.Name = "btFormat";
-            this.btFormat.Size = new System.Drawing.Size(250, 44);
-            this.btFormat.TabIndex = 1;
-            this.btFormat.Text = "Очистить";
-            this.btFormat.UseVisualStyleBackColor = true;
-            this.btFormat.Click += new System.EventHandler(this.btFormat_Click);
-            // 
             // tbSizeF
             // 
             this.tbSizeF.BackColor = System.Drawing.Color.LavenderBlush;
@@ -329,6 +302,33 @@ namespace CDBurn
             this.lbTypeF.TabIndex = 5;
             this.lbTypeF.Text = "Тип:";
             // 
+            // btFormat
+            // 
+            this.btFormat.Enabled = false;
+            this.btFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFormat.Location = new System.Drawing.Point(260, 230);
+            this.btFormat.Name = "btFormat";
+            this.btFormat.Size = new System.Drawing.Size(250, 44);
+            this.btFormat.TabIndex = 1;
+            this.btFormat.Text = "Очистить";
+            this.btFormat.UseVisualStyleBackColor = true;
+            this.btFormat.Click += new System.EventHandler(this.btFormat_Click);
+            // 
+            // cbDisc
+            // 
+            this.cbDisc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDisc.FormattingEnabled = true;
+            this.cbDisc.Location = new System.Drawing.Point(260, 50);
+            this.cbDisc.Name = "cbDisc";
+            this.cbDisc.Size = new System.Drawing.Size(250, 34);
+            this.cbDisc.TabIndex = 0;
+            this.cbDisc.SelectedIndexChanged += new System.EventHandler(this.cbDisc_SelectedIndexChanged);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Multiselect = true;
+            // 
             // notifyIcon
             // 
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
@@ -346,6 +346,7 @@ namespace CDBurn
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CD Burn";
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.tcFunction.ResumeLayout(false);
