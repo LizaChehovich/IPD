@@ -24,7 +24,8 @@ namespace GlobalHooks
             {
                 using (var reader = new StreamReader(@"GH.config"))
                 {
-                    return JsonConvert.DeserializeObject<ConfigurationInfo>(Decode(reader.ReadToEnd()));
+                    var config = JsonConvert.DeserializeObject<ConfigurationInfo>(Decode(reader.ReadToEnd()));
+                    return config ?? new ConfigurationInfo();
                 }
             }
             catch (Exception)
