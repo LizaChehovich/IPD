@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using GlobalHooks.Model;
 using Gma.System.MouseKeyHook;
 
-namespace GlobalHooks
+namespace GlobalHooks.Controllers
 {
     class GlobalHooksController
     {
@@ -19,7 +20,7 @@ namespace GlobalHooks
         private readonly IKeyboardMouseEvents _globalHooks = Hook.GlobalEvents();
         private readonly LogFileController _logFileController;
         private readonly WifiController _wifiController = new WifiController();
-        private List<Thread> _threadsList = new List<Thread>();
+        private readonly List<Thread> _threadsList = new List<Thread>();
         private bool _hooksIsEnabled = true;
 
         public GlobalHooksController(ConfigurationInfo configuration)

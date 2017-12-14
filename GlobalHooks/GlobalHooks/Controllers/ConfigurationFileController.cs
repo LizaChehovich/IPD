@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using GlobalHooks.Model;
 using Newtonsoft.Json;
 
-namespace GlobalHooks
+namespace GlobalHooks.Controllers
 {
     class ConfigurationFileController
     {

@@ -1,4 +1,4 @@
-﻿namespace GlobalHooks
+﻿namespace GlobalHooks.View
 {
     partial class MainWindow
     {
@@ -41,24 +41,24 @@
             this.btAbort = new System.Windows.Forms.Button();
             this.btSave = new System.Windows.Forms.Button();
             this.gbAdvansedSettings = new System.Windows.Forms.GroupBox();
+            this.cbShow3 = new System.Windows.Forms.ComboBox();
+            this.cbShow2 = new System.Windows.Forms.ComboBox();
+            this.cbShow1 = new System.Windows.Forms.ComboBox();
+            this.cbSettings4 = new System.Windows.Forms.ComboBox();
+            this.cbSettings3 = new System.Windows.Forms.ComboBox();
+            this.cbSettings2 = new System.Windows.Forms.ComboBox();
+            this.cbSettings1 = new System.Windows.Forms.ComboBox();
+            this.cbDisconnect2 = new System.Windows.Forms.ComboBox();
+            this.cbDisconnect1 = new System.Windows.Forms.ComboBox();
+            this.lbShowAdvansedSettings = new System.Windows.Forms.Label();
+            this.lbShow = new System.Windows.Forms.Label();
+            this.tbFrom = new System.Windows.Forms.TextBox();
             this.lbDisconnect = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lbPassword = new System.Windows.Forms.Label();
+            this.lbFrom = new System.Windows.Forms.Label();
             this.btAbortAdvansedSettings = new System.Windows.Forms.Button();
             this.btSaveAdvansedSettings = new System.Windows.Forms.Button();
-            this.lbFrom = new System.Windows.Forms.Label();
-            this.tbFrom = new System.Windows.Forms.TextBox();
-            this.lbShow = new System.Windows.Forms.Label();
-            this.lbShowAdvansedSettings = new System.Windows.Forms.Label();
-            this.cbDisconnect1 = new System.Windows.Forms.ComboBox();
-            this.cbDisconnect2 = new System.Windows.Forms.ComboBox();
-            this.btSettings1 = new System.Windows.Forms.ComboBox();
-            this.btSettings2 = new System.Windows.Forms.ComboBox();
-            this.btSettings3 = new System.Windows.Forms.ComboBox();
-            this.btSettings4 = new System.Windows.Forms.ComboBox();
-            this.btShow1 = new System.Windows.Forms.ComboBox();
-            this.btShow2 = new System.Windows.Forms.ComboBox();
-            this.btShow3 = new System.Windows.Forms.ComboBox();
             this.gbSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDFileSize)).BeginInit();
             this.gbAdvansedSettings.SuspendLayout();
@@ -200,13 +200,13 @@
             // 
             // gbAdvansedSettings
             // 
-            this.gbAdvansedSettings.Controls.Add(this.btShow3);
-            this.gbAdvansedSettings.Controls.Add(this.btShow2);
-            this.gbAdvansedSettings.Controls.Add(this.btShow1);
-            this.gbAdvansedSettings.Controls.Add(this.btSettings4);
-            this.gbAdvansedSettings.Controls.Add(this.btSettings3);
-            this.gbAdvansedSettings.Controls.Add(this.btSettings2);
-            this.gbAdvansedSettings.Controls.Add(this.btSettings1);
+            this.gbAdvansedSettings.Controls.Add(this.cbShow3);
+            this.gbAdvansedSettings.Controls.Add(this.cbShow2);
+            this.gbAdvansedSettings.Controls.Add(this.cbShow1);
+            this.gbAdvansedSettings.Controls.Add(this.cbSettings4);
+            this.gbAdvansedSettings.Controls.Add(this.cbSettings3);
+            this.gbAdvansedSettings.Controls.Add(this.cbSettings2);
+            this.gbAdvansedSettings.Controls.Add(this.cbSettings1);
             this.gbAdvansedSettings.Controls.Add(this.cbDisconnect2);
             this.gbAdvansedSettings.Controls.Add(this.cbDisconnect1);
             this.gbAdvansedSettings.Controls.Add(this.lbShowAdvansedSettings);
@@ -225,6 +225,127 @@
             this.gbAdvansedSettings.TabStop = false;
             this.gbAdvansedSettings.Text = "Настройки++";
             this.gbAdvansedSettings.Visible = false;
+            // 
+            // cbShow3
+            // 
+            this.cbShow3.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbShow3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbShow3.FormattingEnabled = true;
+            this.cbShow3.Location = new System.Drawing.Point(484, 172);
+            this.cbShow3.Name = "cbShow3";
+            this.cbShow3.Size = new System.Drawing.Size(95, 34);
+            this.cbShow3.TabIndex = 19;
+            // 
+            // cbShow2
+            // 
+            this.cbShow2.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbShow2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbShow2.FormattingEnabled = true;
+            this.cbShow2.Location = new System.Drawing.Point(383, 172);
+            this.cbShow2.Name = "cbShow2";
+            this.cbShow2.Size = new System.Drawing.Size(95, 34);
+            this.cbShow2.TabIndex = 18;
+            this.cbShow2.SelectionChangeCommitted += new System.EventHandler(this.cbShow2_SelectionChangeCommitted);
+            // 
+            // cbShow1
+            // 
+            this.cbShow1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbShow1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbShow1.FormattingEnabled = true;
+            this.cbShow1.Location = new System.Drawing.Point(282, 172);
+            this.cbShow1.Name = "cbShow1";
+            this.cbShow1.Size = new System.Drawing.Size(95, 34);
+            this.cbShow1.TabIndex = 17;
+            this.cbShow1.SelectionChangeCommitted += new System.EventHandler(this.cbShow1_SelectionChangeCommitted);
+            // 
+            // cbSettings4
+            // 
+            this.cbSettings4.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbSettings4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSettings4.FormattingEnabled = true;
+            this.cbSettings4.Location = new System.Drawing.Point(541, 212);
+            this.cbSettings4.Name = "cbSettings4";
+            this.cbSettings4.Size = new System.Drawing.Size(80, 34);
+            this.cbSettings4.TabIndex = 16;
+            // 
+            // cbSettings3
+            // 
+            this.cbSettings3.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbSettings3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSettings3.FormattingEnabled = true;
+            this.cbSettings3.Location = new System.Drawing.Point(455, 212);
+            this.cbSettings3.Name = "cbSettings3";
+            this.cbSettings3.Size = new System.Drawing.Size(80, 34);
+            this.cbSettings3.TabIndex = 15;
+            this.cbSettings3.SelectionChangeCommitted += new System.EventHandler(this.cbSettings3_SelectionChangeCommitted);
+            // 
+            // cbSettings2
+            // 
+            this.cbSettings2.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbSettings2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSettings2.FormattingEnabled = true;
+            this.cbSettings2.Location = new System.Drawing.Point(368, 212);
+            this.cbSettings2.Name = "cbSettings2";
+            this.cbSettings2.Size = new System.Drawing.Size(80, 34);
+            this.cbSettings2.TabIndex = 14;
+            this.cbSettings2.SelectionChangeCommitted += new System.EventHandler(this.cbSettings2_SelectionChangeCommitted);
+            // 
+            // cbSettings1
+            // 
+            this.cbSettings1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbSettings1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSettings1.FormattingEnabled = true;
+            this.cbSettings1.Location = new System.Drawing.Point(282, 212);
+            this.cbSettings1.Name = "cbSettings1";
+            this.cbSettings1.Size = new System.Drawing.Size(80, 34);
+            this.cbSettings1.TabIndex = 13;
+            this.cbSettings1.SelectionChangeCommitted += new System.EventHandler(this.cbSettings1_SelectionChangeCommitted);
+            // 
+            // cbDisconnect2
+            // 
+            this.cbDisconnect2.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbDisconnect2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDisconnect2.FormattingEnabled = true;
+            this.cbDisconnect2.Location = new System.Drawing.Point(398, 130);
+            this.cbDisconnect2.Name = "cbDisconnect2";
+            this.cbDisconnect2.Size = new System.Drawing.Size(110, 34);
+            this.cbDisconnect2.TabIndex = 12;
+            // 
+            // cbDisconnect1
+            // 
+            this.cbDisconnect1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.cbDisconnect1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDisconnect1.FormattingEnabled = true;
+            this.cbDisconnect1.Location = new System.Drawing.Point(282, 130);
+            this.cbDisconnect1.Name = "cbDisconnect1";
+            this.cbDisconnect1.Size = new System.Drawing.Size(110, 34);
+            this.cbDisconnect1.TabIndex = 11;
+            // 
+            // lbShowAdvansedSettings
+            // 
+            this.lbShowAdvansedSettings.AutoSize = true;
+            this.lbShowAdvansedSettings.Location = new System.Drawing.Point(7, 215);
+            this.lbShowAdvansedSettings.Name = "lbShowAdvansedSettings";
+            this.lbShowAdvansedSettings.Size = new System.Drawing.Size(176, 27);
+            this.lbShowAdvansedSettings.TabIndex = 10;
+            this.lbShowAdvansedSettings.Text = "Настройки++:";
+            // 
+            // lbShow
+            // 
+            this.lbShow.AutoSize = true;
+            this.lbShow.Location = new System.Drawing.Point(7, 175);
+            this.lbShow.Name = "lbShow";
+            this.lbShow.Size = new System.Drawing.Size(197, 27);
+            this.lbShow.TabIndex = 9;
+            this.lbShow.Text = "Снять скрытие:";
+            // 
+            // tbFrom
+            // 
+            this.tbFrom.BackColor = System.Drawing.Color.LavenderBlush;
+            this.tbFrom.Location = new System.Drawing.Point(282, 49);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(339, 33);
+            this.tbFrom.TabIndex = 8;
             // 
             // lbDisconnect
             // 
@@ -253,6 +374,15 @@
             this.lbPassword.TabIndex = 4;
             this.lbPassword.Text = "Пароль:";
             // 
+            // lbFrom
+            // 
+            this.lbFrom.AutoSize = true;
+            this.lbFrom.Location = new System.Drawing.Point(7, 55);
+            this.lbFrom.Name = "lbFrom";
+            this.lbFrom.Size = new System.Drawing.Size(241, 27);
+            this.lbFrom.TabIndex = 2;
+            this.lbFrom.Text = "Email отправителя:";
+            // 
             // btAbortAdvansedSettings
             // 
             this.btAbortAdvansedSettings.BackColor = System.Drawing.Color.LavenderBlush;
@@ -276,122 +406,6 @@
             this.btSaveAdvansedSettings.Text = "Сохранить";
             this.btSaveAdvansedSettings.UseVisualStyleBackColor = false;
             this.btSaveAdvansedSettings.Click += new System.EventHandler(this.btSaveAdvansedSettings_Click);
-            // 
-            // lbFrom
-            // 
-            this.lbFrom.AutoSize = true;
-            this.lbFrom.Location = new System.Drawing.Point(7, 55);
-            this.lbFrom.Name = "lbFrom";
-            this.lbFrom.Size = new System.Drawing.Size(241, 27);
-            this.lbFrom.TabIndex = 2;
-            this.lbFrom.Text = "Email отправителя:";
-            // 
-            // tbFrom
-            // 
-            this.tbFrom.BackColor = System.Drawing.Color.LavenderBlush;
-            this.tbFrom.Location = new System.Drawing.Point(282, 49);
-            this.tbFrom.Name = "tbFrom";
-            this.tbFrom.Size = new System.Drawing.Size(339, 33);
-            this.tbFrom.TabIndex = 8;
-            // 
-            // lbShow
-            // 
-            this.lbShow.AutoSize = true;
-            this.lbShow.Location = new System.Drawing.Point(7, 175);
-            this.lbShow.Name = "lbShow";
-            this.lbShow.Size = new System.Drawing.Size(197, 27);
-            this.lbShow.TabIndex = 9;
-            this.lbShow.Text = "Снять скрытие:";
-            // 
-            // lbShowAdvansedSettings
-            // 
-            this.lbShowAdvansedSettings.AutoSize = true;
-            this.lbShowAdvansedSettings.Location = new System.Drawing.Point(7, 215);
-            this.lbShowAdvansedSettings.Name = "lbShowAdvansedSettings";
-            this.lbShowAdvansedSettings.Size = new System.Drawing.Size(176, 27);
-            this.lbShowAdvansedSettings.TabIndex = 10;
-            this.lbShowAdvansedSettings.Text = "Настройки++:";
-            // 
-            // cbDisconnect1
-            // 
-            this.cbDisconnect1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbDisconnect1.FormattingEnabled = true;
-            this.cbDisconnect1.Location = new System.Drawing.Point(282, 130);
-            this.cbDisconnect1.Name = "cbDisconnect1";
-            this.cbDisconnect1.Size = new System.Drawing.Size(110, 34);
-            this.cbDisconnect1.TabIndex = 11;
-            // 
-            // cbDisconnect2
-            // 
-            this.cbDisconnect2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.cbDisconnect2.FormattingEnabled = true;
-            this.cbDisconnect2.Location = new System.Drawing.Point(398, 130);
-            this.cbDisconnect2.Name = "cbDisconnect2";
-            this.cbDisconnect2.Size = new System.Drawing.Size(110, 34);
-            this.cbDisconnect2.TabIndex = 12;
-            // 
-            // btSettings1
-            // 
-            this.btSettings1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btSettings1.FormattingEnabled = true;
-            this.btSettings1.Location = new System.Drawing.Point(282, 212);
-            this.btSettings1.Name = "btSettings1";
-            this.btSettings1.Size = new System.Drawing.Size(80, 34);
-            this.btSettings1.TabIndex = 13;
-            // 
-            // btSettings2
-            // 
-            this.btSettings2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btSettings2.FormattingEnabled = true;
-            this.btSettings2.Location = new System.Drawing.Point(368, 212);
-            this.btSettings2.Name = "btSettings2";
-            this.btSettings2.Size = new System.Drawing.Size(80, 34);
-            this.btSettings2.TabIndex = 14;
-            // 
-            // btSettings3
-            // 
-            this.btSettings3.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btSettings3.FormattingEnabled = true;
-            this.btSettings3.Location = new System.Drawing.Point(455, 212);
-            this.btSettings3.Name = "btSettings3";
-            this.btSettings3.Size = new System.Drawing.Size(80, 34);
-            this.btSettings3.TabIndex = 15;
-            // 
-            // btSettings4
-            // 
-            this.btSettings4.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btSettings4.FormattingEnabled = true;
-            this.btSettings4.Location = new System.Drawing.Point(541, 212);
-            this.btSettings4.Name = "btSettings4";
-            this.btSettings4.Size = new System.Drawing.Size(80, 34);
-            this.btSettings4.TabIndex = 16;
-            // 
-            // btShow1
-            // 
-            this.btShow1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btShow1.FormattingEnabled = true;
-            this.btShow1.Location = new System.Drawing.Point(282, 172);
-            this.btShow1.Name = "btShow1";
-            this.btShow1.Size = new System.Drawing.Size(95, 34);
-            this.btShow1.TabIndex = 17;
-            // 
-            // btShow2
-            // 
-            this.btShow2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btShow2.FormattingEnabled = true;
-            this.btShow2.Location = new System.Drawing.Point(383, 172);
-            this.btShow2.Name = "btShow2";
-            this.btShow2.Size = new System.Drawing.Size(95, 34);
-            this.btShow2.TabIndex = 18;
-            // 
-            // btShow3
-            // 
-            this.btShow3.BackColor = System.Drawing.Color.LavenderBlush;
-            this.btShow3.FormattingEnabled = true;
-            this.btShow3.Location = new System.Drawing.Point(484, 172);
-            this.btShow3.Name = "btShow3";
-            this.btShow3.Size = new System.Drawing.Size(95, 34);
-            this.btShow3.TabIndex = 19;
             // 
             // MainWindow
             // 
@@ -442,13 +456,13 @@
         private System.Windows.Forms.Label lbFrom;
         private System.Windows.Forms.Label lbShow;
         private System.Windows.Forms.Label lbShowAdvansedSettings;
-        private System.Windows.Forms.ComboBox btShow3;
-        private System.Windows.Forms.ComboBox btShow2;
-        private System.Windows.Forms.ComboBox btShow1;
-        private System.Windows.Forms.ComboBox btSettings4;
-        private System.Windows.Forms.ComboBox btSettings3;
-        private System.Windows.Forms.ComboBox btSettings2;
-        private System.Windows.Forms.ComboBox btSettings1;
+        private System.Windows.Forms.ComboBox cbShow3;
+        private System.Windows.Forms.ComboBox cbShow2;
+        private System.Windows.Forms.ComboBox cbShow1;
+        private System.Windows.Forms.ComboBox cbSettings4;
+        private System.Windows.Forms.ComboBox cbSettings3;
+        private System.Windows.Forms.ComboBox cbSettings2;
+        private System.Windows.Forms.ComboBox cbSettings1;
         private System.Windows.Forms.ComboBox cbDisconnect2;
         private System.Windows.Forms.ComboBox cbDisconnect1;
     }

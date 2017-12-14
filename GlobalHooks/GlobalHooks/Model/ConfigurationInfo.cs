@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace GlobalHooks
+namespace GlobalHooks.Model
 {
     class ConfigurationInfo
     {
@@ -16,7 +16,8 @@ namespace GlobalHooks
         public List<Keys> ShortcutToDisconnect
         {
             get => _shortcutToDisconnect;
-            set => _shortcutToDisconnect = (value == null || value.Count != 2) ? new List<Keys>() {Keys.Alt, Keys.CapsLock} : value;
+            set => _shortcutToDisconnect =
+                (value == null || value.Count != 2) ? new List<Keys>() {Keys.Alt, Keys.D} : value;
         }
 
         private List<Keys> _shortcutToDisplayTheWindow;
@@ -34,7 +35,7 @@ namespace GlobalHooks
         public List<Keys> ShortcutToDisplayAdvancedSettings
         {
             get => _shortcutToDisplayAdvancedSettings;
-            set => _shortcutToDisplayAdvancedSettings = (value == null || value.Count != 3)
+            set => _shortcutToDisplayAdvancedSettings = (value == null || value.Count != 4)
                 ? new List<Keys>() {Keys.Control, Keys.Alt, Keys.Shift, Keys.V}
                 : value;
         }

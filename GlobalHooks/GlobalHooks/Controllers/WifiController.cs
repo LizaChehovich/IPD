@@ -1,6 +1,6 @@
 ﻿using SimpleWifi;
 
-namespace GlobalHooks
+namespace GlobalHooks.Controllers
 {
     class WifiController
     {
