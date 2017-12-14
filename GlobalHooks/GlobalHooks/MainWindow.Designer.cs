@@ -408,6 +408,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MainWindow";
             this.Text = "Кейлоггер";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Shown += new System.EventHandler(this.MainWindow_Shown);
             this.gbSettings.ResumeLayout(false);
             this.gbSettings.PerformLayout();

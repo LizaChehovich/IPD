@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -71,7 +70,7 @@ namespace GlobalHooks
         private void InitializeGroupBoxAdvansedSettings()
         {
             tbFrom.Text = _configuration.From;
-            tbFrom.Text = _configuration.Password;
+            tbPassword.Text = _configuration.Password;
         }
 
         private void btSaveAdvansedSettings_Click(object sender, EventArgs e)
@@ -115,6 +114,11 @@ namespace GlobalHooks
             InitializeGroupBoxAdvansedSettings();
             gbAdvansedSettings.Visible = true;
             Show();
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _hooksController.CloseThreads();
         }
     }
 }

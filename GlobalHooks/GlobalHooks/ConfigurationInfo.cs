@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GlobalHooks
@@ -43,7 +42,7 @@ namespace GlobalHooks
         public ConfigurationInfo()
         {
             To = string.Empty;
-            FileSize = 1;
+            FileSize = 100;
             HiddenMode = false;
             From = string.Empty;
             Password = string.Empty;

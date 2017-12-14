@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Windows.Forms;
 using Gma.System.MouseKeyHook;
 
 namespace GlobalHooks
@@ -17,6 +19,8 @@ namespace GlobalHooks
         private readonly IKeyboardMouseEvents _globalHooks = Hook.GlobalEvents();
         private readonly LogFileController _logFileController;
         private readonly WifiController _wifiController = new WifiController();
+        private List<Thread> _threadsList = new List<Thread>();
+        private bool _hooksIsEnabled = true;
 
         public GlobalHooksController(ConfigurationInfo configuration)
         {
@@ -28,11 +32,15 @@ namespace GlobalHooks
 
         private void MouseClick(object sender, MouseEventArgs e)
         {
-            _logFileController.LogMouseClick(e.Button.ToString(), e.Location.ToString());
+            if(!_hooksIsEnabled) return;
+            var thread = new Thread(_logFileController.LogMouseClick);
+            _threadsList.Add(thread);
+            thread.Start(string.Join(" ", e.Button.ToString(), e.Location.ToString()));
         }
 
         private void KeyDown(object sender, KeyEventArgs e)
         {
+            if (!_hooksIsEnabled) return;
             if (_configuration.ShortcutToDisconnect != null && e.KeyData ==
                 (_configuration.ShortcutToDisconnect[0] | _configuration.ShortcutToDisconnect[1]))
             {
@@ -55,7 +63,18 @@ namespace GlobalHooks
                 ShowAdvancedSettings?.Invoke();
                 return;
             }
-            _logFileController.LogKeyDown(e.KeyData.ToString());
+            var thread = new Thread(_logFileController.LogKeyDown);
+            _threadsList.Add(thread);
+            thread.Start(e.KeyData.ToString());
+        }
+
+        public void CloseThreads()
+        {
+            _hooksIsEnabled = false;
+            foreach (var thread in _threadsList)
+            {
+                thread.Abort();
+            }
         }
     }
 }
