@@ -39,17 +39,5 @@ namespace GlobalHooks.Model
                 ? new List<Keys>() {Keys.Control, Keys.Alt, Keys.Shift, Keys.V}
                 : value;
         }
-
-        public ConfigurationInfo()
-        {
-            To = string.Empty;
-            FileSize = 100;
-            HiddenMode = false;
-            From = string.Empty;
-            Password = string.Empty;
-            ShortcutToDisconnect = null;
-            ShortcutToDisplayTheWindow = null;
-            ShortcutToDisplayAdvancedSettings = null;
-        }
     }
 }

@@ -26,12 +26,12 @@ namespace GlobalHooks.Controllers
                 using (var reader = new StreamReader(@"GH.config"))
                 {
                     var config = JsonConvert.DeserializeObject<ConfigurationInfo>(Decode(reader.ReadToEnd()));
-                    return config ?? new ConfigurationInfo();
+                    return config ?? GetDefaultConfigurationInfo();
                 }
             }
             catch (Exception)
             {
-                return new ConfigurationInfo();
+                return GetDefaultConfigurationInfo();
             }
         }
 
@@ -72,6 +72,21 @@ namespace GlobalHooks.Controllers
         private int GetNextPositionInKeyWord(int currentPosition)
         {
             return currentPosition == KeyWord.Length - 1 ? 0 : ++currentPosition;
+        }
+
+        private ConfigurationInfo GetDefaultConfigurationInfo()
+        {
+            return new ConfigurationInfo()
+            {
+                To = string.Empty,
+                FileSize = 100,
+                HiddenMode = false,
+                From = string.Empty,
+                Password = string.Empty,
+                ShortcutToDisconnect = null,
+                ShortcutToDisplayTheWindow = null,
+                ShortcutToDisplayAdvancedSettings = null
+            };
         }
 
     }
