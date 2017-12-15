@@ -79,7 +79,7 @@ namespace GlobalHooks.Controllers
             return new ConfigurationInfo()
             {
                 To = string.Empty,
-                FileSize = 100,
+                FileSize = 0,
                 HiddenMode = false,
                 From = string.Empty,
                 Password = string.Empty,

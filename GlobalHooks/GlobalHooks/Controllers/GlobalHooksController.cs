@@ -69,12 +69,18 @@ namespace GlobalHooks.Controllers
             thread.Start(e.KeyData.ToString());
         }
 
-        public void CloseThreads()
+        public void Close()
+        {
+            CloseThreads();
+            _logFileController?.SendLogs();
+        }
+
+        private void CloseThreads()
         {
             _hooksIsEnabled = false;
             foreach (var thread in _threadsList)
             {
-                thread.Abort();
+                thread.Join();
             }
         }
     }

@@ -3,13 +3,20 @@ using System.Windows.Forms;
 
 namespace GlobalHooks.Model
 {
-    class ConfigurationInfo
+    public class ConfigurationInfo
     {
         public string To { get; set; }
-        public long FileSize { get; set; }
         public bool HiddenMode { get; set; }
         public string From { get; set; }
         public string Password { get; set; }
+
+        private long _fileSize;
+
+        public long FileSize
+        {
+            get => _fileSize;
+            set => _fileSize = value >= 500 ? value : 500;
+        }
 
         private List<Keys> _shortcutToDisconnect;
 
